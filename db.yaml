@@ -27,14 +27,14 @@
       executable: pip3.9 # pip3.11 if python version is 3.11
   
   # checking DB Password is setup or not
-  - name: checking DB connection
-    community.mysql.mysql_db:
-     login_user: root
-     login_password: "{{ mysql_root_password }}"
-     login_host: "{{login_host}}"
-     filter: version
+  - name: check DB connection
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      login_host: "{{ login_host }}"
+      filter: version
     ignore_errors: yes
-    register: my_sql_connection_output
+    register: mysql_connection_output
  
   - name: print output
     ansible.builtin.debug:
