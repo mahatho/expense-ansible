@@ -1,5 +1,6 @@
 - name: DB setup
   hosts: DB
+  become: yes
   vars:
    login_host : db.mohandevops.online
   tasks:
